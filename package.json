@@ -1,0 +1,21 @@
+{
+  "name": "oauth",
+  "version": "1.0.0",
+  "description": "a simple backend to integrate Oauth",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "nodemon server.js localhost 3000"
+  },
+  "author": "temidayo",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "mkdirp": "^3.0.1",
+    "nodemon": "^3.1.7",
+    "passport": "^0.7.0",
+    "passport-google-oidc": "^0.1.0"
+  }
+}
