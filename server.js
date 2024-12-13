@@ -50,10 +50,10 @@ app.use(passport.authenticate('session'));
 // }))
 
 app.get('/oauth2/redirect/google', function(req, res, next) {
-    passport.authenticate('local', function(err, user, info, status) {
+    passport.authenticate('google', function(err, user, info, status) {
         if (err) { return next(err) }
         if (!user) { return res.redirect('pozse://login/email') }
-        res.redirect(`pozse://verify/email=${user.email}`);
+        res.redirect(`pozse://verify/email=${user}`);
       })(req, res, next);
     }
 )
