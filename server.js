@@ -51,9 +51,10 @@ app.use(passport.authenticate('session'));
 
 app.get('/oauth2/redirect/google', function(req, res, next) {
     passport.authenticate('google', function(err, user, info, status) {
+        const authUser = {name: user.name.givenName, email: user.emails[0].value}
         if (err) { return next(err) }
         if (!user) { return res.redirect('pozse://login/email') }
-        res.redirect(`pozse://verify/email=${JSON.stringify(user)}`);
+        res.redirect(`pozse://verify/user=${JSON.stringify(authUser)}`);
       })(req, res, next);
     }
 )
