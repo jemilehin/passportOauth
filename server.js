@@ -44,11 +44,6 @@ app.get('/login/federated/google',
 
 app.use(passport.authenticate('session'));
 
-// app.get('/oauth2/redirect/google', passport.authenticate('google', {
-//   successRedirect: `pozse://verify/email=`,
-//   failureRedirect: 'pozse://login'
-// }))
-
 app.get('/oauth2/redirect/google', function(req, res, next) {
     passport.authenticate('google', function(err, user, info, status) {
         const authUser = {name: user.name.givenName, method: user.emails[0].value}
@@ -59,16 +54,8 @@ app.get('/oauth2/redirect/google', function(req, res, next) {
     }
 )
 
-// app.get('/protected', function(req, res, next) {
-//  passport.authenticate('local', function(err, user, info, status) {
-//    if (err) { return next(err) }
-//    if (!user) { return res.redirect('/signin') }
-//    res.redirect('/account');
-//  })(req, res, next);
-// });
 
-
-const port = process.env.PORT || 3000; // You can use environment variables for port configuration
+const port = process.env.PORT || 3000; 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
